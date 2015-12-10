@@ -1,0 +1,64 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="company.bigtree.bigtree.ShowRecord">
+
+    <RelativeLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:minHeight="?attr/actionBarSize"
+        android:background="@color/blue_background"
+        android:id="@+id/standard_toolbar">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            >
+
+            <Button
+                android:id="@+id/btn_guide_day"
+                android:layout_width="70dip"
+                android:layout_height="30dip"
+                android:background="@drawable/guide_btn_pink_left"
+                android:gravity="center"
+                android:text="三天内"
+                android:textColor="@color/blue_background"
+                android:textSize="14sp" />
+
+            <Button
+                android:id="@+id/btn_guide_week"
+                android:layout_width="70dip"
+                android:layout_height="30dip"
+                android:background="@drawable/guide_btn_trans_center"
+                android:gravity="center"
+                android:text="一周内"
+                android:textColor="#ffffff"
+                android:textSize="14sp" />
+
+            <Button
+                android:id="@+id/btn_guide_month"
+                android:layout_width="70dip"
+                android:layout_height="30dip"
+                android:background="@drawable/guide_btn_trans_right"
+                android:gravity="center"
+                android:text="一月内"
+                android:textColor="#ffffff"
+                android:textSize="14sp" />
+        </LinearLayout>
+    </RelativeLayout>
+    <ListView
+        android:layout_below="@+id/standard_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:id="@+id/record_list"
+        />
+
+
+
+
+</RelativeLayout>

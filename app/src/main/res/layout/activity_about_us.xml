@@ -1,0 +1,96 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="company.bigtree.bigtree.AboutUsActivity">
+
+    <include layout="@layout/standard_toolbar"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingTop="@dimen/activity_vertical_margin"
+        android:paddingBottom="@dimen/activity_vertical_margin">
+
+        <!--<RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            >
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:src="@mipmap/big_tree_launch"
+                android:layout_centerInParent="true"
+                />
+        </RelativeLayout>-->
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1.5"
+            >
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="兰州大树炬教育科技有限公司致力于教育信息化系统的研发与设计。目前开发测试的“大树炬可视化数字教学辅助系统”集学生签到考勤，课堂答题互动，云端数据分析，平时成绩评测等功能，可以有效提高课堂教学效率。"/>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="3.5"
+            android:layout_marginTop="@dimen/activity_vertical_margin">
+            <TextView
+                android:id="@+id/center_text"
+                android:textSize="18sp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:gravity="center"
+                android:text="梦想还很远\n我们还没钱\n公司还不大\n上市还挺难\n折腾好青年\n技术牛宅男\n营销小能手\n财务会管钱\n如果有想法\n欢迎QQ谈"
+                />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="2.5"
+            android:layout_marginTop="@dimen/activity_vertical_margin"
+            >
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="120dp"
+                android:src="@drawable/erweima"
+                android:id="@+id/erweima"
+                android:layout_centerInParent="true"
+                />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+
+                android:layout_below="@+id/erweima"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:autoLink="phone"
+                    android:text="大树炬教育科技公开群： 497542823"/>
+            </LinearLayout>
+
+        </RelativeLayout>
+
+
+    </LinearLayout>
+
+
+
+
+
+
+</LinearLayout>

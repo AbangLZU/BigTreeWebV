@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">大树炬</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+
+<!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_splash">SplashActivity</string>
+
+
+    <string name="copyright">© CopyRight 2015, 兰州大树炬教育科技有限公司</string>
+    <string name="title_activity_answer">AnswerActivity</string>
+    <string name="title_activity_show_record">ShowRecord</string>
+    <string name="title_activity_user_sign">UserSignActivity</string>
+    <string name="title_activity_about_us">AboutUsActivity</string>
+</resources>

@@ -1,0 +1,225 @@
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:tools="http://schemas.android.com/tools"
+xmlns:bootstrapbutton="http://schemas.android.com/apk/res-auto"
+xmlns:fontawesometext="http://schemas.android.com/apk/res-auto"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+android:orientation="vertical"
+tools:context="company.bigtree.bigtree.AnswerActivity">
+
+<RelativeLayout
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="50dp"
+    android:minHeight="?attr/actionBarSize"
+    android:background="@color/blue_background"
+    android:id="@+id/standard_toolbar">
+
+    <ImageView
+        android:id="@+id/back_icon"
+        android:layout_width="36dp"
+        android:layout_height="36dp"
+        android:src="@drawable/back"
+        android:layout_centerVertical="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:id="@+id/standard_toolbar_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="开始答题"
+        android:layout_toRightOf="@+id/back_icon"
+        android:layout_toEndOf="@+id/back_icon"
+        android:textSize="@dimen/title_size"
+        android:textColor="@color/white"
+        android:layout_centerVertical="true"
+        />
+</RelativeLayout>
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    >
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:editable="false"
+        android:singleLine="true"
+        android:textSize="45sp"
+        android:id="@+id/show_text"
+        android:gravity="center_vertical"
+        android:cursorVisible="true"
+        android:ellipsize="none"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="horizontal"
+            android:paddingTop="@dimen/activity_vertical_margin"
+            android:paddingBottom="@dimen/activity_vertical_margin">
+            <com.beardedhen.androidbootstrap.BootstrapButton
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                bootstrapbutton:bb_roundedCorners="true"
+                android:layout_weight="1"
+                android:text="A"
+                android:textSize="20sp"
+                android:id="@+id/button_a"
+                android:gravity="center"
+                />
+            <com.beardedhen.androidbootstrap.BootstrapButton
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                bootstrapbutton:bb_roundedCorners="true"
+                android:layout_marginLeft="8dp"
+                android:layout_weight="1"
+                android:text="B"
+                android:textSize="20sp"
+                android:id="@+id/button_b"
+                android:gravity="center"
+                />
+            <com.beardedhen.androidbootstrap.BootstrapButton
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                bootstrapbutton:bb_roundedCorners="true"
+                android:layout_marginLeft="8dp"
+                android:layout_weight="1"
+                android:text="C"
+                android:textSize="20sp"
+                android:id="@+id/button_c"
+                android:gravity="center"
+                />
+            <com.beardedhen.androidbootstrap.BootstrapButton
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                bootstrapbutton:bb_roundedCorners="true"
+                android:layout_marginLeft="8dp"
+                android:layout_weight="1"
+                android:text="删除"
+                android:textSize="18sp"
+                android:id="@+id/button_delete"
+                android:gravity="center"
+                />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="horizontal"
+            android:paddingTop="@dimen/activity_vertical_margin"
+            android:paddingBottom="@dimen/activity_vertical_margin">
+            <com.beardedhen.androidbootstrap.BootstrapButton
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                bootstrapbutton:bb_roundedCorners="true"
+                android:layout_weight="1"
+                android:text="D"
+                android:textSize="20sp"
+                android:id="@+id/button_d"
+                android:gravity="center"
+                />
+            <com.beardedhen.androidbootstrap.BootstrapButton
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                bootstrapbutton:bb_roundedCorners="true"
+                android:layout_marginLeft="8dp"
+                android:layout_weight="1"
+                android:text="E"
+                android:textSize="20sp"
+                android:id="@+id/button_e"
+                android:gravity="center"
+                />
+            <com.beardedhen.androidbootstrap.BootstrapButton
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                bootstrapbutton:bb_roundedCorners="true"
+                android:layout_marginLeft="8dp"
+                android:layout_weight="1"
+                android:text="F"
+                android:textSize="20sp"
+                android:id="@+id/button_f"
+                android:gravity="center"
+                />
+            <com.beardedhen.androidbootstrap.BootstrapButton
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                bootstrapbutton:bb_roundedCorners="true"
+                android:layout_marginLeft="8dp"
+                android:layout_weight="1"
+                android:text="确定"
+                android:textSize="18sp"
+                android:id="@+id/button_ok"
+                android:gravity="center"
+                />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="horizontal"
+            android:paddingTop="@dimen/activity_vertical_margin"
+            android:paddingBottom="@dimen/activity_vertical_margin">
+            <com.beardedhen.androidbootstrap.BootstrapButton
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                bootstrapbutton:bb_roundedCorners="true"
+                android:layout_weight="1"
+                android:text="G"
+                android:textSize="20sp"
+                android:id="@+id/button_g"
+                android:gravity="center"
+                />
+            <com.beardedhen.androidbootstrap.BootstrapButton
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                bootstrapbutton:bb_roundedCorners="true"
+                android:layout_marginLeft="8dp"
+                android:layout_weight="1"
+                android:text="H"
+                android:textSize="20sp"
+                android:id="@+id/button_h"
+                android:gravity="center"
+                />
+            <com.beardedhen.androidbootstrap.BootstrapButton
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                bootstrapbutton:bb_roundedCorners="true"
+                android:layout_marginLeft="8dp"
+                android:layout_weight="1"
+                android:text="I"
+                android:textSize="20sp"
+                android:id="@+id/button_i"
+                android:gravity="center"
+                />
+            <com.beardedhen.androidbootstrap.BootstrapButton
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                bootstrapbutton:bb_roundedCorners="true"
+                android:layout_marginLeft="8dp"
+                android:layout_weight="1"
+                android:text="发送"
+                android:textSize="18sp"
+                android:id="@+id/button_send"
+                android:gravity="center"
+                />
+        </LinearLayout>
+
+    </LinearLayout>
+</LinearLayout>
+
+</LinearLayout>
+

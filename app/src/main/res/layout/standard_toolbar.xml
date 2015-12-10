@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="48dp"
+    android:minHeight="?attr/actionBarSize"
+    android:background="@color/blue_background"
+    android:id="@+id/standard_toolbar">
+
+    <ImageView
+        android:id="@+id/back_icon"
+        android:layout_width="36dp"
+        android:layout_height="36dp"
+        android:src="@drawable/back"
+        android:layout_centerVertical="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:id="@+id/standard_toolbar_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/back_icon"
+        android:layout_toEndOf="@+id/back_icon"
+        android:textSize="@dimen/title_size"
+        android:textColor="@color/white"
+        android:layout_centerVertical="true"
+        />
+</RelativeLayout>
