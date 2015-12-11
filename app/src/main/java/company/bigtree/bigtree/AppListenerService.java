@@ -318,9 +318,9 @@ public class AppListenerService extends Service {
 
         isOut=false;
 
-        Log.e(TAG, countTimeTemp + "  " + isOut);
+        /*Log.e(TAG, countTimeTemp + "  " + isOut);
         Log.e(TAG, "离线->在线");
-        startVibration();
+        startVibration();*/
         sendMsgToAct("1=9");
     }
 
@@ -335,9 +335,9 @@ public class AppListenerService extends Service {
 
         isOut=true;
 
-        Log.e(TAG, countTimeTemp + "  " + isOut);
+        /*Log.e(TAG, countTimeTemp + "  " + isOut);
         Log.e(TAG, "在线->离线");
-        startVibration();
+        startVibration();*/
         sendMsgToAct("1=4");
     }
 

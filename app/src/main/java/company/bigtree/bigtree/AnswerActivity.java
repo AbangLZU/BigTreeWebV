@@ -93,7 +93,18 @@ public class AnswerActivity extends AppCompatActivity{
             buttonList.get(i).setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    showText.append(buttonList.get(j).getText().toString());
+                    String textString = showText.getText().toString();
+                    if (textString.endsWith(":") || textString.equals("")) {
+                        showText.append(buttonList.get(j).getText().toString());
+                    } else {
+                        String[] texts = textString.split(":");
+                        String last = texts[texts.length - 1];
+                        if (last.contains(buttonList.get(j).getText().toString())) {
+                            return;
+                        } else {
+                            showText.append(buttonList.get(j).getText().toString());
+                        }
+                    }
                 }
             });
         }
