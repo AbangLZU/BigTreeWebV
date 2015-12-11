@@ -114,7 +114,7 @@ public class AppListenerService extends Service {
         @Override
         public void onSocketResponse(String txt) {
             Log.e("Receive from Server", txt);
-            if (txt.equals("404")){
+            /*if (txt.equals("404")){
                 outOfTimeNumber++;
                 if (outOfTimeNumber>=2){
                     sendMsgToAct("1=1");
@@ -124,7 +124,24 @@ public class AppListenerService extends Service {
             }
             else {
                 analyseResult(txt);
+            }*/
+            /*if (txt.equals("loginin!")){
+                sendMsgToAct("11="+txt);
             }
+            else {
+                sendMsgToAct("0="+txt);
+            }*/
+            if (txt.equals("404")||txt.equals("connected!")){
+
+            }else {
+                if (txt.equals("loginin!")){
+                    sendMsgToAct("3="+txt);
+                }
+                else {
+                    sendMsgToAct("0="+txt);
+                }
+            }
+
         }
     };
 
@@ -142,15 +159,12 @@ public class AppListenerService extends Service {
         packet.pack(str);
         if (socketClient==null){
             socketClient=new Client(this.getApplicationContext(),socketResponse);
-            socketClient.open(userInfo.getString("ipAddress","null"),9999);
+            socketClient.open("192.168.199.167",9999);
         }
         if (socketClient.isNeedConn()){
-            String ipAddress=userInfo.getString("ipAddress", "null");
-            if (!ipAddress.equals("null")){
-                socketClient.open(ipAddress, 9999);
+            socketClient.open("192.168.199.167", 9999);
 
-                socketClient.send(packet);
-            }
+            socketClient.send(packet);
         }else {
             socketClient.send(packet);
         }
@@ -302,7 +316,7 @@ public class AppListenerService extends Service {
     /*单纯切回，未杀死进程*/
     private void whenBack(){
         /*告知已经上线*/
-        sendMsgToCom("5:"+userInfo.getString("userNumber",userNumber)+":"+userInfo.getString("userPassword",userPassword)+":\n");
+        /*sendMsgToCom("5:"+userInfo.getString("userNumber",userNumber)+":"+userInfo.getString("userPassword",userPassword)+":\n");
         lastTimeTemp=SystemClock.elapsedRealtime();
         int onceTime=(int)((lastTimeTemp-classInfo.getLong("lastTime",lastTimeTemp))/1000);
         if (onceTime>=0){
@@ -316,7 +330,7 @@ public class AppListenerService extends Service {
         editor1.putLong("lastTime", lastTimeTemp);
         editor1.commit();
 
-        isOut=false;
+        isOut=false;*/
 
         /*Log.e(TAG, countTimeTemp + "  " + isOut);
         Log.e(TAG, "离线->在线");
@@ -327,18 +341,18 @@ public class AppListenerService extends Service {
     /*单纯切出，不杀死进程*/
     private void whenOut(){
         /*告知已经离线*/
-        sendMsgToCom("6:"+userInfo.getString("userNumber",userNumber)+":"+userInfo.getString("userPassword",userPassword)+":\n");
+        /*sendMsgToCom("6:"+userInfo.getString("userNumber",userNumber)+":"+userInfo.getString("userPassword",userPassword)+":\n");
         sendMsgToCom("");
         SharedPreferences.Editor editor1=classInfo.edit();
         editor1.putLong("lastTime", SystemClock.elapsedRealtime());
         editor1.commit();
 
-        isOut=true;
+        isOut=true;*/
 
         /*Log.e(TAG, countTimeTemp + "  " + isOut);
         Log.e(TAG, "在线->离线");
         startVibration();*/
-        sendMsgToAct("1=4");
+        //sendMsgToAct("1=4");
     }
 
     private void startConnect(){
@@ -421,11 +435,11 @@ public class AppListenerService extends Service {
                 case 0:
                     //登录消息
                     userNumber=tem[1];
-                    userPassword=tem[2];
-                    sendMsgToCom("1:"+userNumber+":"+userPassword+":\n");
+                    //userPassword=tem[2];
+                    sendMsgToCom("1:"+userNumber+":\n");
                     break;
                 case 1:
-                    sendMsgToCom("18393919594:"+tem[1]+"\n");
+                    sendMsgToCom(global.getAccout().toString()+":"+tem[1]+"\n");
                     break;
                 case 2:
                     userNumber=tem[1];
@@ -440,10 +454,7 @@ public class AppListenerService extends Service {
                     break;
                 case 4:
                     /*重连操作*/
-                    String ipAddress=userInfo.getString("ipAddress", "null");
-                    if (!ipAddress.equals("null")){
-                        socketClient.open(ipAddress, 9999);
-                    }
+                    socketClient.open("192.168.199.167", 9999);
                     break;
                 default:
                     break;

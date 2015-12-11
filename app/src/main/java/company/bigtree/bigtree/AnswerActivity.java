@@ -8,6 +8,7 @@ import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -21,7 +22,7 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class AnswerActivity extends AppCompatActivity{
+public class AnswerActivity extends AppCompatActivity implements InoutIdDialogFragment.InfoSendListener{
 
     private ListenFromService listenFromService;
     private Global global;
@@ -29,7 +30,9 @@ public class AnswerActivity extends AppCompatActivity{
     SharedPreferences userInfo;//用于保存用户登录成功后的用户信息：姓名，学号
     SharedPreferences classInfo; //isClassStart(boolean)目前是否上课 countTime(int)总时间 lastTime(long)离线的时间点
 
+    String lastAccount;
 
+    InoutIdDialogFragment inoutIdDialogFragment;
 
     /*************控件注解**************/
 
@@ -46,24 +49,32 @@ public class AnswerActivity extends AppCompatActivity{
     @Bind(R.id.standard_toolbar_title)
     TextView toolbarTitle;
 
-    @OnClick(R.id.back_icon)
-    public void clickBack(){
-        AnswerActivity.this.finish();
+    @OnClick(R.id.input_id)
+    public void clickInputId(){
+        inoutIdDialogFragment=new InoutIdDialogFragment();
+        inoutIdDialogFragment.show(getFragmentManager(), "inputIdDialog");
     }
 
     @OnClick(R.id.button_send)
     public void clickSend(){
         String showString=showText.getText().toString();
-        if (showString.equals("")){
+        if (global.getAccout().equals("0")){
+            Toast.makeText(AnswerActivity.this,"请先连接",Toast.LENGTH_SHORT).show();
+            inoutIdDialogFragment=new InoutIdDialogFragment();
+            inoutIdDialogFragment.show(getFragmentManager(), "inputIdDialog");
         }
-        else{
-            if (showString.substring(showString.length()-1).equals(":")){
-                /**发送消息*/
-                sendMsgToSer("1="+showString);
-                showText.setText("");
+        else {
+            if (showString.equals("")){
             }
-            else {
-                Toast.makeText(AnswerActivity.this,"请先确定再发送！",Toast.LENGTH_SHORT).show();
+            else{
+                if (showString.substring(showString.length()-1).equals(":")){
+                    /**发送消息*/
+                    sendMsgToSer("1="+showString);
+                    showText.setText("");
+                }
+                else {
+                    Toast.makeText(AnswerActivity.this,"请先确定再发送！",Toast.LENGTH_SHORT).show();
+                }
             }
         }
     }
@@ -156,21 +167,22 @@ public class AnswerActivity extends AppCompatActivity{
         userInfo=getSharedPreferences("user", Activity.MODE_PRIVATE);
         classInfo=getSharedPreferences("classInfo",Activity.MODE_PRIVATE);
 
+
+
+        initView();
+
+        /*启动后台Service*/
+        global.setStartedService(true);
+        Intent intent=new Intent(this,AppListenerService.class);
+        startService(intent);
+
         /*注册广播，收听来自Activity的消息*/
         listenFromService=new ListenFromService();
         IntentFilter filter = new IntentFilter(global.getServiceToActivity());
         registerReceiver(listenFromService, filter);
 
-        initView();
-
-        if (!global.isStartedService()){
-            /*启动后台Service*/
-            global.setStartedService(true);
-            Intent intent=new Intent(this,AppListenerService.class);
-            startService(intent);
-        }
-
     }
+
 
     @Override
     protected void onDestroy() {
@@ -178,6 +190,15 @@ public class AnswerActivity extends AppCompatActivity{
         unregisterReceiver(listenFromService);
         stopService(new Intent(this, AppListenerService.class));
     }
+
+
+    @Override
+    public void onInfoSend(String account) {
+        Log.e("账号",account);
+        lastAccount=account;
+        sendMsgToSer("0=" + account);
+    }
+
 
     /**
      * 数字=消息
@@ -196,6 +217,16 @@ public class AnswerActivity extends AppCompatActivity{
                     //普通字符
                     resultAnalyse(tem[1]);
                     break;
+                case 2:
+                    DialogHelp.getMessageDialog(AnswerActivity.this,"wifi未打开！").show();
+                    break;
+                case 3:
+                    //登录成功！
+                    global.setAccout(lastAccount);
+                    Toast.makeText(AnswerActivity.this,"连接成功！",Toast.LENGTH_SHORT).show();
+                    SharedPreferences.Editor editor=userInfo.edit();
+                    editor.putString("account",lastAccount);
+                    editor.commit();
                 default:
                     break;
             }

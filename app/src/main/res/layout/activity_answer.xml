@@ -16,25 +16,27 @@ tools:context="company.bigtree.bigtree.AnswerActivity">
     android:background="@color/blue_background"
     android:id="@+id/standard_toolbar">
 
-    <ImageView
-        android:id="@+id/back_icon"
-        android:layout_width="36dp"
-        android:layout_height="36dp"
-        android:src="@drawable/back"
-        android:layout_centerVertical="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
 
     <TextView
         android:id="@+id/standard_toolbar_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/activity_horizontal_margin"
         android:text="开始答题"
-        android:layout_toRightOf="@+id/back_icon"
-        android:layout_toEndOf="@+id/back_icon"
         android:textSize="@dimen/title_size"
         android:textColor="@color/white"
         android:layout_centerVertical="true"
+        />
+    <TextView
+        android:id="@+id/input_id"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="连接"
+        android:textSize="@dimen/title_size"
+        android:textColor="@color/white"
+        android:layout_centerVertical="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="@dimen/activity_horizontal_margin"
         />
 </RelativeLayout>
 

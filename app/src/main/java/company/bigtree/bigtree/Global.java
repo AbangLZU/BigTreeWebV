@@ -9,7 +9,7 @@ import com.shamanland.fonticon.FontIconTypefaceHolder;
  */
 public class Global extends Application{
 
-
+    private String accout;
 
 
     private static final String ACTIVITY_TO_SERVICE="com.bigtree.activitytoservice";
@@ -41,10 +41,18 @@ public class Global extends Application{
         return serverUrl;
     }
 
+    public String getAccout() {
+        return accout;
+    }
+
+    public void setAccout(String accout) {
+        this.accout = accout;
+    }
+
     @Override
     public void onCreate() {
         super.onCreate();
-
+        accout="0";
         startedService=false;
 
     }
